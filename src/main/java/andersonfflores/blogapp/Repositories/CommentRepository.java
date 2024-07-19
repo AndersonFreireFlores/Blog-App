@@ -2,7 +2,6 @@ package andersonfflores.blogapp.Repositories;
 
 import andersonfflores.blogapp.Models.Comment;
 import andersonfflores.blogapp.Models.DTOs.CommentDTO;
-import org.hibernate.type.descriptor.converter.spi.JpaAttributeConverter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
