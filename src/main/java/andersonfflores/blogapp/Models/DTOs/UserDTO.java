@@ -1,4 +1,6 @@
 package andersonfflores.blogapp.Models.DTOs;
 
-public record UserDTO(String name, String email) {
+import java.util.UUID;
+
+public record UserDTO(UUID id,String name, String email) {
 }

@@ -31,6 +31,13 @@ public class Comment {
         this.post_id = post_id;
     }
 
+    public Comment(String body, String imgUrl, User user_id, Post post_id) {
+        this.body = body;
+        this.imgUrl = imgUrl;
+        this.user_id = user_id;
+        this.post_id = post_id;
+    }
+
     public UUID getId() {
         return id;
     }

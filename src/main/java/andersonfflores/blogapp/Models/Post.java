@@ -35,6 +35,15 @@ public class Post {
         this.createdAt = createdAt;
     }
 
+    public Post(String title, String body, String imgUrl, User user_id, List<Comment> comments, LocalDateTime createdAt) {
+        this.title = title;
+        this.body = body;
+        this.imgUrl = imgUrl;
+        this.user_id = user_id;
+        this.comments = comments;
+        this.createdAt = createdAt;
+    }
+
     public UUID getId() {
         return id;
     }
