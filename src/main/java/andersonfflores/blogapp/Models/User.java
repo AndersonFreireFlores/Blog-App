@@ -1,4 +1,4 @@
-package andersonfflores.blogapp.models;
+package andersonfflores.blogapp.Models;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;

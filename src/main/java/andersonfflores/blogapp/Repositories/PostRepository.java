@@ -1,6 +1,6 @@
 package andersonfflores.blogapp.Repositories;
 
-import andersonfflores.blogapp.models.Post;
+import andersonfflores.blogapp.Models.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
