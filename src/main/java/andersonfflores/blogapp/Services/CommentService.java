@@ -23,7 +23,7 @@ public class CommentService {
         this.postRepository = postRepository;
     }
 
-    public List<CommentDTO> getAllCommentsInDTO() {
+    public List<CommentDTO> getAllComments() {
         return commentRepository.findAllCommentsInDTO();
     }
 
@@ -50,6 +50,16 @@ public class CommentService {
                 postRepository.findById(commentDTO.postId()).orElseThrow(
                         () -> new RuntimeException("Post not found")
                 )));
+        return commentDTO;
+    }
+
+    public CommentDTO updateComment(UUID id, CommentDTO commentDTO) {
+        Comment comment = commentRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Comment not found")
+        );
+        comment.setBody(commentDTO.body());
+        comment.setImgUrl(commentDTO.imgUrl());
+        commentRepository.save(comment);
         return commentDTO;
     }
 

@@ -1,7 +1,6 @@
-package andersonfflores.blogapp;
+package andersonfflores.blogapp.Controllers;
 
 import andersonfflores.blogapp.Models.DTOs.PostDTO;
-import andersonfflores.blogapp.Repositories.PostRepository;
 import andersonfflores.blogapp.Services.PostService;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +22,7 @@ public class PostController {
     }
 
     @GetMapping("/{id}")
-    public PostDTO getPostById(UUID id){
+    public PostDTO getPostById(@PathVariable UUID id){
         return postService.getPostById(id);
     }
 
