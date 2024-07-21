@@ -42,7 +42,7 @@ public class CommentService {
 
     }
 
-    public CommentDTO saveComment(CommentDTO commentDTO){
+    public CommentDTO saveComment(CommentDTO commentDTO) {
         commentRepository.save(new Comment(
                 commentDTO.body(),
                 commentDTO.imgUrl(),
@@ -62,8 +62,6 @@ public class CommentService {
         commentRepository.save(comment);
         return commentDTO;
     }
-
-
 
 
     public void deleteComment(UUID id) {
