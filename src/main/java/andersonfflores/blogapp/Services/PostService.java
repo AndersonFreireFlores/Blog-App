@@ -29,7 +29,7 @@ public class PostService {
                         post.getTitle(),
                         post.getBody(),
                         post.getImgUrl(),
-                        postRepository.findByUserDTOId(post.getUser_id().getId()),
+                        postRepository.findByUserDTOId(post.getUser().getId()),
                         postRepository.findAllCommentsDTOsByPostId(post.getId()),
                         post.getCreatedAt())).toList();
     }
@@ -41,7 +41,7 @@ public class PostService {
                         post.getTitle(),
                         post.getBody(),
                         post.getImgUrl(),
-                        postRepository.findByUserDTOId(post.getUser_id().getId()),
+                        postRepository.findByUserDTOId(post.getUser().getId()),
                         postRepository.findAllCommentsDTOsByPostId(post.getId()),
                         post.getCreatedAt())).orElse(null);
     }
@@ -65,7 +65,7 @@ public class PostService {
         post.setTitle(postDTO.title());
         post.setBody(postDTO.body());
         post.setImgUrl(postDTO.imgUrl());
-        post.setUser_id(postRepository.findUserByPostId(postDTO.author().id()));
+        post.setUser(postRepository.findUserByPostId(postDTO.author().id()));
         post.setComments(commentRepository.findAllByPost_id(postDTO.id()));
         postRepository.save(post);
         return postDTO;

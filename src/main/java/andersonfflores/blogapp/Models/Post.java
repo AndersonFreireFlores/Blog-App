@@ -1,6 +1,7 @@
 package andersonfflores.blogapp.Models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,11 +16,15 @@ public class Post {
 
     private String title;
     private String body;
+
+    @Column(name = "imgurl")
     private String imgUrl;
     @ManyToOne
-    private User user_id;
+    private User user;
     @OneToMany
     private List<Comment> comments;
+
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     public Post() {
@@ -30,7 +35,7 @@ public class Post {
         this.title = title;
         this.body = body;
         this.imgUrl = imgUrl;
-        this.user_id = user_id;
+        this.user = user_id;
         this.comments = comments;
         this.createdAt = createdAt;
     }
@@ -39,7 +44,7 @@ public class Post {
         this.title = title;
         this.body = body;
         this.imgUrl = imgUrl;
-        this.user_id = user_id;
+        this.user = user_id;
         this.comments = comments;
         this.createdAt = createdAt;
     }
@@ -76,12 +81,12 @@ public class Post {
         this.imgUrl = imgUrl;
     }
 
-    public User getUser_id() {
-        return user_id;
+    public User getUser() {
+        return user;
     }
 
-    public void setUser_id(User user_id) {
-        this.user_id = user_id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Comment> getComments() {

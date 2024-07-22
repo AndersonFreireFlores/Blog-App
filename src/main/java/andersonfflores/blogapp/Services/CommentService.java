@@ -33,8 +33,8 @@ public class CommentService {
                         comment.getId(),
                         comment.getBody(),
                         comment.getImgUrl(),
-                        comment.getUser_id().getName(),
-                        comment.getUser_id().getEmail(),
+                        comment.getUser().getName(),
+                        comment.getUser().getEmail(),
                         comment.getPost_id().getId())).orElseThrow(
                 () -> new RuntimeException("Comment not found")
         );
