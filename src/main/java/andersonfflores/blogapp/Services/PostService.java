@@ -51,8 +51,8 @@ public class PostService {
                 postDTO.title(),
                 postDTO.body(),
                 postDTO.imgUrl(),
-                userRepository.findUserByPostId(postDTO.author().id()),
-                commentRepository.findAllByPostId(postDTO.id()),
+                postRepository.findUserByPostId(postDTO.author().id()),
+                commentRepository.findAllByPost_id(postDTO.id()),
                 postDTO.createdAt()
         ));
         return postDTO;
@@ -65,8 +65,8 @@ public class PostService {
         post.setTitle(postDTO.title());
         post.setBody(postDTO.body());
         post.setImgUrl(postDTO.imgUrl());
-        post.setUser_id(userRepository.findUserByPostId(postDTO.author().id()));
-        post.setComments(commentRepository.findAllByPostId(postDTO.id()));
+        post.setUser_id(postRepository.findUserByPostId(postDTO.author().id()));
+        post.setComments(commentRepository.findAllByPost_id(postDTO.id()));
         postRepository.save(post);
         return postDTO;
     }

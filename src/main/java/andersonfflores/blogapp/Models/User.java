@@ -1,16 +1,13 @@
 package andersonfflores.blogapp.Models;
 
+import andersonfflores.blogapp.Models.Enum.UserRole;
 import jakarta.persistence.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "tb_user")
-public class User implements UserDetails {
+public class User  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,16 +17,26 @@ public class User implements UserDetails {
     private String email;
     private String country;
     private String password;
+    private UserRole role;
 
     public User() {
     }
 
-    public User(UUID id, String name, String email, String country, String password) {
+    public User(UUID id, String name, String email, String country, String password, UserRole role) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.country = country;
         this.password = password;
+        this.role = role;
+    }
+
+    public User(String name, String email, String country, String password, UserRole role) {
+        this.name = name;
+        this.email = email;
+        this.country = country;
+        this.password = password;
+        this.role = role;
     }
 
     public UUID getId() {
@@ -60,45 +67,24 @@ public class User implements UserDetails {
         return country;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public UserRole getRole() {
+        return role;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 
     public String getPassword() {
         return password;
     }
 
-    @Override
-    public String getUsername() {
-        return "";
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
 }

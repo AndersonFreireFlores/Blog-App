@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@RestController("/comment")
+@RestController
 public class CommentController {
 
     private final CommentService commentService;
@@ -16,27 +16,27 @@ public class CommentController {
         this.commentService = commentService;
     }
 
-    @GetMapping
+    @GetMapping(value = "/comment")
     public List<CommentDTO> getAllComments(){
         return commentService.getAllComments();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/comment/{id}")
     public CommentDTO getCommentById(@PathVariable UUID id){
         return commentService.getCommentById(id);
     }
 
-    @PostMapping
+    @PostMapping(value = "/comment")
     public CommentDTO createComment(@RequestBody CommentDTO comment){
         return commentService.saveComment(comment);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/comment/{id}")
     public CommentDTO updateComment(@PathVariable UUID id, @RequestBody CommentDTO comment){
         return commentService.updateComment(id, comment);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/comment/{id}")
     public void deleteComment(@PathVariable UUID id){
         commentService.deleteComment(id);
     }

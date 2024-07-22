@@ -20,6 +20,10 @@ public interface PostRepository extends JpaRepository<Post, UUID> {
 
     @Query(value = "SELECT comment.id, comment.body,comment.imgurl, user.name, user.email FROM comment INNER JOIN tb_user on comment.user_id = user.id " +
             "WHERE comment.post_id = :postId", nativeQuery = true)
-    List<CommentDTO> findAllCommentsDTOsByPostId(UUID postId);
+    List<CommentDTO> findAllCommentsDTOsByPostId(@Param("postId")UUID postId);
+
+    @Query(value = "SELECT *  FROM tb_user INNER JOIN post on tb_user.id = post.user_id " +
+            "WHERE post.id = :postId", nativeQuery = true)
+    User findUserByPostId(@Param("postId")UUID postId);
 
 }

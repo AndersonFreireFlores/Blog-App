@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@RestController("/post")
+@RestController()
 public class PostController {
 
    private final PostService postService;
@@ -16,27 +16,27 @@ public class PostController {
         this.postService = service;
     }
 
-    @GetMapping
+    @GetMapping(value = "/post")
     public List<PostDTO> getAllPosts(){
         return postService.getAllPosts();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/post/{id}")
     public PostDTO getPostById(@PathVariable UUID id){
         return postService.getPostById(id);
     }
 
-    @PostMapping
+    @PostMapping(value = "/post")
     public PostDTO createPost(@RequestBody PostDTO post){
         return postService.savePost(post);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/post/{id}")
     public PostDTO updatePost(@PathVariable UUID id, @RequestBody PostDTO post){
         return postService.updatePost(id, post);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/post/{id}")
     public void deletePost(@PathVariable UUID id){
         postService.deletePost(id);
     }
